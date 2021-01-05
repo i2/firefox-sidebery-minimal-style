@@ -43,7 +43,4 @@ button.category:nth-child(1),
 .sticky-container {position: static !important}
 .more-options-button {background-color: transparent !important}
 .more-options-button:hover {background-color: #80808040 !important}
-
-@-moz-document url-prefix("chrome://mozapps/content/extensions/aboutaddons.html"){
-  :root {scrollbar-color: #80808060 transparent !important}
 }
