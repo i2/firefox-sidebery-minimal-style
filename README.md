@@ -21,7 +21,6 @@ Universal minimal style for Firefox and Sidebery
 
 # Settings css
  - If you need window control buttons - unlock code `Show window buttons - + x`
- - If you need an interface in window mode - block the code `Hide interface in window mode`
 
 # Recommended settings about:config
 - Opening a bookmark in a new tab
@@ -38,3 +37,7 @@ Universal minimal style for Firefox and Sidebery
 `full-screen-api.warning.timeout` `0`
 - Disable add-on recommendations
 `extensions.htmlaboutaddons.recommendations.enabled` `false`
+- Disable two-step search
+`browser.urlbar.update2` `false`
+- Disable sponsored sites
+`browser.newtabpage.activity-stream.showSponsored` `false`
