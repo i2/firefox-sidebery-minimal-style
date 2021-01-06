@@ -45,7 +45,7 @@ spacer {filter: invert(100%)}
   scrollbar-width: thin;
   scrollbar-color: #80808060 transparent;
 
-  font-size: 11pt;
+  font-size: 10.5pt !important;
 
   border: none !important;
   --toolbarbutton-border-radius: 0;
@@ -73,7 +73,7 @@ spacer {filter: invert(100%)}
 }
 
 :root[uidensity="compact"] * {
-  font-size: 10pt}
+  font-size: 10pt !important}
  
 :root[tabsintitlebar] {
   background-color: var(--bg) !important;
@@ -202,7 +202,7 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 */
 
 
-/*   Hide interface in window mode   */
+/*   Hide interface in window mode   
 [sizemode="normal"] #tabbrowser-tabs,
 [sizemode="normal"] #titlebar
   {display:inherit}
@@ -215,6 +215,7 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 [sizemode="normal"] .tab-close-button,
 [sizemode="normal"] .tab-line
   {display:none}
+*/
 
 
 /*   ______ NAVBAR ______   */
@@ -257,8 +258,8 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 #urlbar-input {
   margin-bottom: 1px !important;
   color: var(--text) !important}
-.searchbar-textbox{
-  margin-bottom: 3px !important;
+.searchbar-textbox {
+  margin-bottom: 2px !important;
   color: var(--text) !important}
 #identity-popup{--popup-width: auto !important}
 
@@ -291,7 +292,8 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
     padding-block: 4px !important}
 
   #tracking-protection-icon-container {padding: 0 2px !important}
-  #identity-box {margin: 0 2px 0 0 !important; padding: 0 2px !important}
+  #identity-box {margin: 0 3px 0 0 !important; padding: 0 2px !important}
+  #identity-icon, #identity-icon-label {margin-bottom: 2px !important}
 
   #urlbar[pageproxystate="invalid"] #identity-box {margin: 0 6px 0 11px !important}
 
@@ -304,11 +306,12 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 
 
 /*   ______ Notifications ______   */
-.toolbarbutton-badge {
+:root .toolbarbutton-badge {
   background-color: transparent !important;
   box-shadow: none !important;
   padding: 0 0 4px !important;
   color: var(--text) !important;
+  font-size: 8pt !important;
   opacity: .9;
   text-shadow:
   -1px 2px 3px var(--bg),
@@ -433,10 +436,12 @@ menupopup:-moz-any(menu,menuitem,menucaption):not([disabled="true"]):not([hidden
   {display:-moz-box}
 
 
+
 #statuspanel-label {
   background-color: var(--bg) !important;
   color: var(--text) !important;
   opacity: .7}
+
 
 #alertBox {
   background-color: var(--bg) !important;
