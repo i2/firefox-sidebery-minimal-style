@@ -1,12 +1,12 @@
 /*   ______ Dark ______   */ 
 @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
   * {
-    --text-hover: #fff;
-    --text: #ddd;
     --bg: #000;
     --menu: #111;
     --hover: #1a1a1a;
     --active: #262626;
+    --text: #ddd;
+    --text-hover: #fff;    
     --url-color: #8F94D2;
   
     --lwt-toolbarbutton-icon-fill: #aaa !important;
@@ -26,12 +26,12 @@
 /*   ______ Light ______   */ 
 @media (prefers-color-scheme: light) {
   :root {
-    --text-hover: #000;
-    --text: #111;
     --bg: #fafafa;
     --menu: #fafafa;
     --hover: #eaeaea;
     --active: #dadada;
+    --text: #111;
+    --text-hover: #000;
     --url-color: #4353B6;
   
     --lwt-toolbarbutton-icon-fill: #222 !important;
@@ -263,11 +263,13 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
   color: var(--text) !important}
 #identity-popup{--popup-width: auto !important}
 
-[uidensity="compact"] #urlbar-container {--urlbar-container-height: 26px !important}
-:root:not([uidensity="compact"]) #urlbar-container {--urlbar-container-height: 30px !important}
+#urlbar-container {--urlbar-container-height: 30px !important}
+:root[uidensity="compact"] #urlbar-container {--urlbar-container-height: 26px !important}
 #search-container {margin: -2px 0 !important}
-#urlbar {top: 1px !important}
-#urlbar {color: var(--lwt-toolbarbutton-icon-fill) !important}
+
+#urlbar {
+  color: var(--lwt-toolbarbutton-icon-fill) !important;
+  top: 1px !important}
 
 #urlbar-background, #navigator-toolbox #searchbar {background-color: var(--bg) !important}
 #urlbar:not([open]) #urlbar-background, #searchbar {box-shadow: none !important}
@@ -275,27 +277,25 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 .urlbarView-row {color: var(--text)}
 .urlbarView-row[selected] .urlbarView-title {color: var(--text-hover)}
 
-  /* Megabar */
-  #urlbar[breakout][breakout-extend] {
-    left: 0 !important;
-    width: 100% !important}
+#urlbar[breakout][breakout-extend] {
+  left: 0 !important;
+  width: 100% !important}
 
-  #urlbar[breakout][breakout-extend] > #urlbar-input-container {
-    height: 30px !important;
-    padding-block: 0 !important;
-    padding-inline: 0 !important}
-  [uidensity="compact"] #urlbar[breakout][breakout-extend] > #urlbar-input-container {
-    height: 26px !important}
+#urlbar[breakout][breakout-extend] > #urlbar-input-container {
+  padding-inline: 0 !important;
+  padding-block: 0 !important;
+  height: 30px !important}
+[uidensity="compact"] #urlbar[breakout][breakout-extend] > #urlbar-input-container {
+  height: 26px !important}
 
+#urlbar .search-one-offs:not([hidden]) {
+  padding-block: 4px !important}
 
-  #urlbar .search-one-offs:not([hidden]) {
-    padding-block: 4px !important}
+#tracking-protection-icon-container {padding: 0 2px !important}
+#identity-box {margin: 0 3px 0 0 !important; padding: 0 2px !important}
+#identity-icon, #identity-icon-label {margin-bottom: 2px !important}
 
-  #tracking-protection-icon-container {padding: 0 2px !important}
-  #identity-box {margin: 0 3px 0 0 !important; padding: 0 2px !important}
-  #identity-icon, #identity-icon-label {margin-bottom: 2px !important}
-
-  #urlbar[pageproxystate="invalid"] #identity-box {margin: 0 6px 0 11px !important}
+#urlbar[pageproxystate="invalid"] #identity-box {margin: 0 6px 0 11px !important}
 
 #pageActionButton,
 #editBookmarkPanelImage,
@@ -311,7 +311,7 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
   box-shadow: none !important;
   padding: 0 0 4px !important;
   color: var(--text) !important;
-  font-size: 8pt !important;
+  font-size: 7.5pt !important;
   opacity: .9;
   text-shadow:
   -1px 2px 3px var(--bg),
@@ -367,11 +367,11 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
   margin-top: 6px !important; 
   margin-right: 0 !important}
 
-panelmultiview {min-height: 0 !important}
 
-panel {margin-inline: -14px !important}
+panel {margin-inline: -16px !important}
+:root[uidensity="compact"] panel {margin-inline: -14px !important}
 
-menupopup, menuseparator, menuitem, menucaption, menupopup menu, tooltip, panelview {
+menupopup, menuseparator, menuitem:not([active]), menucaption, menupopup menu, tooltip, panelview {
   -moz-appearance: none !important;
   background-color: var(--menu) !important;
   color: var(--text) !important;
@@ -390,23 +390,29 @@ menupopup > menu > menupopup {
   menupopup, tooltip, panelview, .panel-footer {border: 1px solid var(--hover) !important}
 }
 
-menuitem:hover,
-menupopup menu:hover > label,
-toolbarbutton:hover:not([disabled]),
-.urlbarView-row:hover,
-.bookmark-item[open] > label
-  {color: var(--text-hover) !important}
+
 menuitem:hover,
 menupopup menu:hover,
 toolbarbutton:hover:not([disabled], .titlebar-close, #nav-bar #back-button),
 toolbarbutton.bookmark-item[open],
 .menu-iconic:hover,
-.menu-iconic[open]
-  {background-color: var(--hover) !important}
+.menu-iconic[open],
+.downloadMainArea:hover,
+.downloadButton:hover,
+#downloadsHistory:hover {
+  background-color: var(--hover) !important;
+  color: var(--text-hover) !important}
+
 menuitem:active,
 menupopup menu:active,
-toolbarbutton:active:not([disabled], .titlebar-close, #nav-bar #back-button)
-  {background-color: var(--active) !important}
+toolbarbutton:active:not([disabled], .titlebar-close, #nav-bar #back-button),
+.downloadMainArea:active,
+.downloadButton:active,
+#downloadsHistory:active {
+  background-color: var(--active) !important}
+
+.downloadsPanelFooterButton:hover {outline: 0 !important}
+
 
 
 #context-navigation,
@@ -458,14 +464,10 @@ menupopup:-moz-any(menu,menuitem,menucaption):not([disabled="true"]):not([hidden
 
 
 /*   ______ Library ______   */
-#placesToolbar {
-  padding: 0 4px 0 0 !important}
-#placesToolbar > toolbarbutton {
-  padding: 7px !important}
-#placesMenu > menu {
-  padding: 5px !important}
-#placesMenu > menu > .menubar-text {
-  color: var(--text)}
+#placesToolbar {padding: 0 4px 0 0 !important}
+#placesToolbar > toolbarbutton {padding: 7px !important}
+#placesMenu > menu {padding: 5px !important}
+#placesMenu > menu > .menubar-text {color: var(--text)}
 :root {--organizer-text-secondary-color: transparent !important}
 #searchFilter {background-color: var(--hover) !important}
 
@@ -477,7 +479,7 @@ menupopup:-moz-any(menu,menuitem,menucaption):not([disabled="true"]):not([hidden
 
 /*   ______ ADDONS ______   */
 
-/*   Checker Plus for Gmail   */ 
+/*   Checker Plus for Gmail   */
 #checkerplusforgmail_jasonsavard_com-browser-action .toolbarbutton-badge {color: #E74B3B !important}
 
 /*   Context Search Origin   */
@@ -488,7 +490,7 @@ menupopup:-moz-any(menu,menuitem,menucaption):not([disabled="true"]):not([hidden
   #_e040cf12-0537-4265-8ce0-ee195356ed60_-menuitem-_f_M3cYVO8DkN > hbox:nth-child(1) > image:nth-child(1)
     {filter: invert(100%)}}
 
-/*   Translate Web Pages - Filipe Ps   */ 
+/*   Translate Web Pages - Filipe Ps   */
 @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {#pageAction-urlbar-_036a55b4-5e72-4d05-a06c-cba2dfcc134a_ {filter: contrast(0%)}}
 
 /*   Toggle Proxy WebExt   */
