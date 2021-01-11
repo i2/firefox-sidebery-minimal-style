@@ -17,10 +17,6 @@
     {filter: contrast(0%)}
   
   [checked="true"] .menu-iconic-left {filter: contrast(300%)}
-  
-#urlbar-input::-moz-selection {
-  background-color: var(--text)!important;
-  color: var(--bg)}
 }
 
 /*   ______ Light ______   */ 
@@ -70,11 +66,13 @@ spacer {filter: invert(100%)}
    /*  searchbar */
   --autocomplete-popup-background: var(--bg);
   --autocomplete-popup-color: var(--text);
+  
+  --lwt-sidebar-background-color: var(--bg) !important;
+  --lwt-sidebar-text-color: var(--text) !important;
 }
 
-:root[uidensity="compact"] * {
-  font-size: 10pt !important}
- 
+:root[uidensity="compact"] * {font-size: 10pt !important}
+
 :root[tabsintitlebar] {
   background-color: var(--bg) !important;
   color: var(--text) !important
@@ -86,7 +84,7 @@ spacer {filter: invert(100%)}
 .titlebar-color {background-color: var(--bg)}
 hbox.titlebar-spacer:nth-child(1) {display:none !important}
 
-.tabbrowser-tab[pinned="true"] {
+.tabbrowser-tab[pinned] {
   background-color: var(--bg) !important;
   z-index: 3 !important}
 
@@ -98,7 +96,7 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
   height: 2px !important}
 
 
-.tab-background[multiselected] {background-color: #223B82 !important}
+.tab-background[multiselected] {background: #223B82 !important}
 .tabbrowser-tab[multiselected] :hover .tab-background:not([selected]) {background-color: #2C4890 !important}
 
 @media (prefers-color-scheme: light) {
@@ -110,10 +108,8 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
   .tab-background[selected]:not([multiselected]) {background: var(--hover) !important}
 }
 
+.tab-background[multiselected] > .tab-background-inner {background-color: transparent !important}
 .tabbrowser-tab:hover .tab-background:not([selected]) {background-color: var(--hover) !important}
-
-.tab-background[multiselected] > .tab-background-inner {
-  background-color: transparent !important}
 
 
 .all-tabs-item {
@@ -157,17 +153,19 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 [titlepreface*="[Sidebery]"] #titlebar,
 [titlepreface*="[Sidebery]"] #tabbrowser-tabs,
 [titlepreface*="[Sidebery]"] #tabContextMenu,
-[hidden]#sidebar-box,
-#sidebar-header
+[titlepreface*="[Sidebery]"] #sidebar-header,
+[hidden]#sidebar-box
   {display:none}
 
 
 /*   Dynamic sidebar   */
+[titlepreface*="[Sidebery]"] #sidebar-box {
+  max-width: 28px}
 #sidebar-box {
   overflow: hidden;
   height: calc(100% - 28px);
   position: fixed;
-  max-width: 28px;
+  max-width: 1px;
   display: block;
   transition: 90ms;
   z-index: 3}
@@ -188,6 +186,15 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
   [titlepreface*="[Sidebery]"] #appcontent {margin-left: 28px}
   [inFullscreen] #appcontent {margin-left: 0}
 }
+
+/*   Firefox sidebar   */
+#sidebar-header {width: 100% !important}
+#sidebar-header, #search-box{
+  -moz-appearance: none !important;
+  background-color: var(--bg) !important;
+  color: var(--text) !important}
+treechildren::-moz-tree-separator {border: 0 !important}
+
 
 
 /*   Show window buttons - + x   
@@ -220,22 +227,22 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 
 /*   ______ NAVBAR ______   */
 
-:root:not([uidensity="compact"]) #back-button {
+:root:not([uidensity="compact"]) .browser-toolbar #back-button {
   padding-block: 0 !important;
   padding-inline: 0 !important;
   border-radius: 0 !important;
 }
-:root:not([uidensity="compact"]) #back-button > .toolbarbutton-icon {
+:root:not([uidensity="compact"]) .browser-toolbar #back-button > .toolbarbutton-icon {
   background-color: var(--bg) !important;
   border-radius: 0 !important;
   width: 32px !important;
   height: 32px !important;
   padding: 8px !important;
 }
-:root:not([uidensity="compact"]) #back-button:hover > .toolbarbutton-icon {
+:root:not([uidensity="compact"]) .browser-toolbar #back-button:hover > .toolbarbutton-icon {
   background-color: var(--hover) !important}
 
-:root:not([uidensity="compact"]) #back-button:active > .toolbarbutton-icon {
+:root:not([uidensity="compact"]) .browser-toolbar #back-button:active > .toolbarbutton-icon {
   background-color: var(--active) !important}
 
 :root:not([uidensity="compact"]) {--toolbarbutton-inner-padding: 8px !important}
@@ -258,10 +265,15 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 #urlbar-input {
   margin-bottom: 1px !important;
   color: var(--text) !important}
+
 .searchbar-textbox {
   margin-bottom: 2px !important;
   color: var(--text) !important}
-#identity-popup{--popup-width: auto !important}
+
+#urlbar-input::-moz-selection {background-color: var(--text) !important; color: var(--bg)}
+@media (prefers-color-scheme: light) {#urlbar-input::-moz-selection {background-color: #444 !important}}
+
+#identity-popup {--popup-width: auto !important}
 
 #urlbar-container {--urlbar-container-height: 30px !important}
 :root[uidensity="compact"] #urlbar-container {--urlbar-container-height: 26px !important}
@@ -288,8 +300,7 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 [uidensity="compact"] #urlbar[breakout][breakout-extend] > #urlbar-input-container {
   height: 26px !important}
 
-#urlbar .search-one-offs:not([hidden]) {
-  padding-block: 4px !important}
+#urlbar .search-one-offs:not([hidden]) {padding-block: 4px !important}
 
 #tracking-protection-icon-container {padding: 0 2px !important}
 #identity-box {margin: 0 3px 0 0 !important; padding: 0 2px !important}
@@ -348,6 +359,7 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 #appMenu-customize-button,
 #appMenu-whatsnew-button,
 #appMenu-more-button,
+#appMenu_menu_HelpPopup_reportPhishingtoolmenu[disabled],
 [oncommand="openHelpLink('firefox-help')"],
 [oncommand="openTourPage();"],
   /* Hotkeys */
@@ -414,7 +426,6 @@ toolbarbutton:active:not([disabled], .titlebar-close, #nav-bar #back-button),
 .downloadsPanelFooterButton:hover {outline: 0 !important}
 
 
-
 #context-navigation,
 #context-sep-navigation,
 #context-sendpagetodevice,
@@ -430,17 +441,11 @@ toolbarbutton:active:not([disabled], .titlebar-close, #nav-bar #back-button),
 #context-savepage,
 #context-sep-sendpagetodevice,
 #context-bookmarklink,
-menupopup :-moz-any(menu,menuitem,menucaption)[disabled="true"],
-menupopup.textbox-contextmenu:nth-child(3) > menuseparator:nth-child(8),
-#toolbar-context-menu > menuseparator:nth-child(14),
-#placesContext_newSeparator,
-#appMenu_menu_HelpPopup_reportPhishingtoolmenu[disabled],
-#context-inspect-a11y
+#context-inspect-a11y,
+menupopup :-moz-any(menuitem)[disabled],
+menupopup :-moz-any(menuitem)[disabled] + menuseparator:not(#placesContext_editSeparator, #placesContext_openSeparator),
+#toolbar-context-menu menuitem[hidden] + menuseparator:not([id])
   {display:none}
-
-menupopup:-moz-any(menu,menuitem,menucaption):not([disabled="true"]):not([hidden="true"]) ~ menuseparator:first-of-type:not([hidden="true"])
-  {display:-moz-box}
-
 
 
 #statuspanel-label {
@@ -457,7 +462,7 @@ menupopup:-moz-any(menu,menuitem,menucaption):not([disabled="true"]):not([hidden
 
 /*   ______ Findbar Ctrl+F ______   */
 .findbar-container, .findbar-textbox:not([status="notfound"]), .findbar-closebutton.close-icon {
-  background-color: var(--menu)!important;
+  background-color: var(--menu) !important;
   padding: 0 4px !important}
 .findbar-find-previous:not(:hover), .findbar-find-next:not(:hover) {
   background: var(--menu) !important}
@@ -466,7 +471,7 @@ menupopup:-moz-any(menu,menuitem,menucaption):not([disabled="true"]):not([hidden
 /*   ______ Library ______   */
 #placesToolbar {padding: 0 4px 0 0 !important}
 #placesToolbar > toolbarbutton {padding: 7px !important}
-#placesMenu > menu {padding: 5px !important}
+#placesMenu > menu {padding: 4px !important}
 #placesMenu > menu > .menubar-text {color: var(--text)}
 :root {--organizer-text-secondary-color: transparent !important}
 #searchFilter {background-color: var(--hover) !important}
@@ -479,9 +484,6 @@ menupopup:-moz-any(menu,menuitem,menucaption):not([disabled="true"]):not([hidden
 
 /*   ______ ADDONS ______   */
 
-/*   Checker Plus for Gmail   */
-#checkerplusforgmail_jasonsavard_com-browser-action .toolbarbutton-badge {color: #E74B3B !important}
-
 /*   Context Search Origin   */
 #_e040cf12-0537-4265-8ce0-ee195356ed60_-menuitem-_ri9VWUaW_hZ0 {-moz-box-ordinal-group: 0}
 #_ddc62400-f22d-4dd3-8b4a-05837de53c2e_-menuitem-_read-selection {-moz-box-ordinal-group: 2}
@@ -493,9 +495,7 @@ menupopup:-moz-any(menu,menuitem,menucaption):not([disabled="true"]):not([hidden
 /*   Translate Web Pages - Filipe Ps   */
 @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {#pageAction-urlbar-_036a55b4-5e72-4d05-a06c-cba2dfcc134a_ {filter: contrast(0%)}}
 
-/*   Toggle Proxy WebExt   */
-#toggle-proxy-webext_defkev-browser-action[label="No Proxy"] image.toolbarbutton-icon {filter: invert(65%)}
-#toggle-proxy-webext_defkev-browser-action image.toolbarbutton-icon {filter: brightness(0.5) sepia(1) saturate(10000%) hue-rotate(200deg)}
-@media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {#toggle-proxy-webext_defkev-browser-action[label="No Proxy"] image.toolbarbutton-icon {filter: invert(30%)}
+/*   Checker Plus for Gmail   */
+#checkerplusforgmail_jasonsavard_com-browser-action .toolbarbutton-badge {color: #E74B3B !important}
 
  
