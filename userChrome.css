@@ -405,7 +405,7 @@ menupopup > menu > menupopup {
 
 menuitem:hover,
 menupopup menu:hover,
-toolbarbutton:hover:not([disabled], .titlebar-close, #nav-bar #back-button),
+toolbarbutton:hover:not([disabled], .titlebar-close, .close-icon, #nav-bar #back-button),
 toolbarbutton.bookmark-item[open],
 .menu-iconic:hover,
 .menu-iconic[open],
@@ -417,7 +417,7 @@ toolbarbutton.bookmark-item[open],
 
 menuitem:active,
 menupopup menu:active,
-toolbarbutton:active:not([disabled], .titlebar-close, #nav-bar #back-button),
+toolbarbutton:active:not([disabled], .titlebar-close, .close-icon, #nav-bar #back-button),
 .downloadMainArea:active,
 .downloadButton:active,
 #downloadsHistory:active {
