@@ -1,5 +1,6 @@
 # firefox-sidebery-minimal-style
-Universal minimal style for Firefox and Sidebery
+Universal minimal style for Firefox and Sidebery. Reduced thickness - 28px.
+
 # Install Firefox Style
 1. In about:config enable pref toolkit.legacyUserProfileCustomizations.stylesheets
 2. Open about:support
@@ -17,7 +18,7 @@ Universal minimal style for Firefox and Sidebery
 1. Install https://addons.mozilla.org/firefox/addon/sidebery/
 2. Copy the code from SideberySidebar.css to Sidebery / Settings / Styles editor / Sidebar
 3. Copy the code from SideberyGroupPage.css to Sidebery / Settings / Styles editor / Group page
-4. Enable the option: Sidebery / Settings / Help / Add preface to the browser window's title if sidebery is active
+4. Enable the option: Sidebery / Settings / Help / Add preface to the browser window's title if sidebery is active. This will hide the top tabs.
 
 # Settings css
  - If you need window control buttons - unlock code `Show window buttons - + x`
@@ -41,3 +42,14 @@ Universal minimal style for Firefox and Sidebery
 `browser.urlbar.update2` `false`
 - Disable sponsored sites
 `browser.newtabpage.activity-stream.showSponsored` `false`
+
+# Screenshots
+![alt text](screenshots/d1.png)
+![alt text](screenshots/d2.png)
+![alt text](screenshots/d3.png)
+![alt text](screenshots/d4.png)
+![alt text](screenshots/d5.png)
+![alt text](screenshots/l1.png)
+![alt text](screenshots/l2.png)
+![alt text](screenshots/l3.png)
+![alt text](screenshots/l4.png)
