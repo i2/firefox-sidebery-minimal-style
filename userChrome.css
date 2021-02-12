@@ -6,7 +6,7 @@
     --hover: #1a1a1a;
     --active: #262626;
     --text: #ddd;
-    --text-hover: #fff;    
+    --text-hover: #fff;
     --url-color: #8F94D2;
   
     --lwt-toolbarbutton-icon-fill: #aaa !important;
@@ -209,42 +209,22 @@ treechildren::-moz-tree-separator {border: 0 !important}
 */
 
 
-/*   Hide interface in window mode   
-[sizemode="normal"] #tabbrowser-tabs,
-[sizemode="normal"] #titlebar
-  {display:inherit}
-[sizemode="normal"] .tab-background[selected] {background-color: var(--bg) !important}
-[sizemode="normal"][titlepreface*="[Sidebery]"] #titlebar {margin-bottom: 0}
-[sizemode="normal"] #nav-bar {margin-top: -29px; visibility: collapse}
-[sizemode="normal"] #appcontent {margin-left: 0}
-[sizemode="normal"] #sidebar-box,
-[sizemode="normal"] #tabs-newtab-button,
-[sizemode="normal"] .tab-close-button,
-[sizemode="normal"] .tab-line
-  {display:none}
-*/
-
-
 /*   ______ NAVBAR ______   */
 
 :root:not([uidensity="compact"]) .browser-toolbar #back-button {
   padding-block: 0 !important;
   padding-inline: 0 !important;
-  border-radius: 0 !important;
-}
+  border-radius: 0 !important}
+
 :root:not([uidensity="compact"]) .browser-toolbar #back-button > .toolbarbutton-icon {
   background-color: var(--bg) !important;
   border-radius: 0 !important;
   width: 32px !important;
   height: 32px !important;
-  padding: 8px !important;
-}
-:root:not([uidensity="compact"]) .browser-toolbar #back-button:hover > .toolbarbutton-icon {
-  background-color: var(--hover) !important}
+  padding: 8px !important}
 
-:root:not([uidensity="compact"]) .browser-toolbar #back-button:active > .toolbarbutton-icon {
-  background-color: var(--active) !important}
-
+:root:not([uidensity="compact"]) .browser-toolbar #back-button:hover  > .toolbarbutton-icon {background-color: var(--hover) !important}
+:root:not([uidensity="compact"]) .browser-toolbar #back-button:active > .toolbarbutton-icon {background-color: var(--active) !important}
 :root:not([uidensity="compact"]) {--toolbarbutton-inner-padding: 8px !important}
 
 
