@@ -43,6 +43,9 @@ Universal minimal style for Firefox and Sidebery. Reduced thickness - 28px.
 - Disable sponsored sites
 `browser.newtabpage.activity-stream.showSponsored` `false`
 
+# Video
+https://vimeo.com/496534499
+
 # Screenshots
 ![alt text](screenshots/d1.png)
 ![alt text](screenshots/d2.png)
