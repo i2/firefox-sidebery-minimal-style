@@ -1,14 +1,13 @@
-/*   ______ Dark ______   */ 
 @media (prefers-color-scheme: dark), (prefers-color-scheme: no-preference) {
   * {
     --bg: #000;
-    --menu: #111;
-    --hover: #1a1a1a;
-    --active: #262626;
+    --menu: #0b0b0b;
+    --hover: #141414;
+    --active: #1a1a1a;
     --text: #ddd;
     --text-hover: #fff;
     --url-color: #8F94D2;
-  
+    --tab-line-color: #ddd;
     --lwt-toolbarbutton-icon-fill: #aaa !important;
   }
   
@@ -19,9 +18,11 @@
   [checked="true"] .menu-iconic-left {filter: contrast(300%)}
 }
 
-/*   ______ Light ______   */ 
+
+
+
 @media (prefers-color-scheme: light) {
-  :root {
+  * {
     --bg: #fafafa;
     --menu: #fafafa;
     --hover: #eaeaea;
@@ -29,14 +30,15 @@
     --text: #111;
     --text-hover: #000;
     --url-color: #4353B6;
-  
+    --tab-line-color: #FF1B00;
     --lwt-toolbarbutton-icon-fill: #222 !important;
   }
   
-spacer {filter: invert(100%)}
+  spacer {filter: invert(100%)}
 }
 
-/*   ______ All ______   */ 
+
+
 * {
   scrollbar-width: thin;
   scrollbar-color: #80808060 transparent;
@@ -45,6 +47,9 @@ spacer {filter: invert(100%)}
 
   border: none !important;
   --toolbarbutton-border-radius: 0;
+  
+  --arrowpanel-dimmed: var(--hover) !important;
+  --arrowpanel-dimmed-further: var(--active) !important;
 
   --lwt-accent-color: var(--bg) !important;
   --lwt-background-tab-separator-color: transparent;
@@ -56,10 +61,10 @@ spacer {filter: invert(100%)}
   --toolbar-color: var(--text) !important;
   --toolbarbutton-outer-padding: 0;
   --toolbarbutton-hover-background: var(--hover) !important;
-  --toolbarbutton-active-background: var(--active) !important;
+  --toolbarbutton-active-background: var(--hover) !important;
 
    /*  urlbar  */
-  --autocomplete-popup-highlight-background: #6664 !important;
+  --autocomplete-popup-highlight-background: var(--hover) !important;
   --autocomplete-popup-highlight-color: var(--url-color) !important;
   --urlbar-popup-action-color: var(--url-color) !important;
   --urlbar-popup-url-color: var(--url-color) !important;
@@ -78,9 +83,9 @@ spacer {filter: invert(100%)}
   color: var(--text) !important
 }
 
-/*   ______ TABS ______   */
 
-/*   ______ Tab bar ______   */
+
+/*   ______ TABS ______   */
 .titlebar-color {background-color: var(--bg)}
 hbox.titlebar-spacer:nth-child(1) {display:none !important}
 
@@ -88,20 +93,12 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
   background-color: var(--bg) !important;
   z-index: 3 !important}
 
-.tab-line {
-  height: 0 !important}
-
-.tabbrowser-tab[selected] .tab-line {
-  background-color: var(--text) !important;
-  height: 2px !important}
-
+.tab-line:not([selected]) {height: 0 !important}
 
 .tab-background[multiselected] {background: #223B82 !important}
 .tabbrowser-tab[multiselected] :hover .tab-background:not([selected]) {background-color: #2C4890 !important}
 
 @media (prefers-color-scheme: light) {
-  .tabbrowser-tab[selected] .tab-line {background-color: #FF1B00 !important}
-  
   .tab-background[multiselected] {background-color: #4B7CFC !important}
   .tabbrowser-tab[multiselected] :hover .tab-background:not([selected]) {background-color: #3E6AE5 !important}
   
@@ -114,8 +111,7 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 
 .all-tabs-item {
   opacity: .8}
-.all-tabs-item[selected],
-.all-tabs-item[selected] :hover {
+.all-tabs-item[selected] {
   opacity: 1;
   box-shadow: none !important;
   background-color: var(--active) !important}
@@ -134,10 +130,12 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 
 /*   Discard tabs   */
 .tabbrowser-tab:not([selected="false"])[pending] .tab-content {opacity: .7 !important}
-.tabbrowser-tab[pending]:hover .tab-content {opacity: .8 !important}
-.tab-label:-moz-window-inactive {opacity: .8 !important}
+.tabbrowser-tab[pending]:hover .tab-content,
+.tab-label:-moz-window-inactive {
+  opacity: .8 !important}
 
 .titlebar-spacer {width: 14px !important}
+
 
 
 /*   Hide Tab bar if Sidebery is Active   */
@@ -156,6 +154,7 @@ hbox.titlebar-spacer:nth-child(1) {display:none !important}
 [titlepreface*="[Sidebery]"] #sidebar-header,
 [hidden]#sidebar-box
   {display:none}
+
 
 
 /*   Dynamic sidebar   */
@@ -209,8 +208,8 @@ treechildren::-moz-tree-separator {border: 0 !important}
 */
 
 
-/*   ______ NAVBAR ______   */
 
+/*   ______ NAVBAR ______   */
 :root:not([uidensity="compact"]) .browser-toolbar #back-button {
   padding-block: 0 !important;
   padding-inline: 0 !important;
@@ -228,15 +227,15 @@ treechildren::-moz-tree-separator {border: 0 !important}
 :root:not([uidensity="compact"]) {--toolbarbutton-inner-padding: 8px !important}
 
 
+
 /*   Bookmarks   */
 .bookmark-item .toolbarbutton-icon,
 .openintabs-menuitem,
 .bookmarks-actions-menuseparator
   {display:none}
 
-.bookmark-item .toolbarbutton-text {color: var(--text)}
-.bookmark-item:hover .toolbarbutton-text {color: var(--text-hover)}
 .bookmark-item menuseparator {height: 8px}
+
 
 
 /*   Urlbar, Searchbar */
@@ -249,6 +248,8 @@ treechildren::-moz-tree-separator {border: 0 !important}
 .searchbar-textbox {
   margin-bottom: 2px !important;
   color: var(--text) !important}
+
+#PlacesToolbarItems > toolbarbutton:hover > label {color: var(--text-hover) !important}
 
 #urlbar-input::-moz-selection {background-color: var(--text) !important; color: var(--bg)}
 @media (prefers-color-scheme: light) {#urlbar-input::-moz-selection {background-color: #444 !important}}
@@ -265,6 +266,8 @@ treechildren::-moz-tree-separator {border: 0 !important}
 
 #urlbar-background, #navigator-toolbox #searchbar {background-color: var(--bg) !important}
 #urlbar:not([open]) #urlbar-background, #searchbar {box-shadow: none !important}
+
+#urlbar[breakout][breakout-extend][open] > #urlbar-background {box-shadow: 0 0 0 1px var(--hover) !important}
 
 .urlbarView-row {color: var(--text)}
 .urlbarView-row[selected] .urlbarView-title {color: var(--text-hover)}
@@ -296,6 +299,7 @@ treechildren::-moz-tree-separator {border: 0 !important}
   {display:none !important}
 
 
+
 /*   ______ Notifications ______   */
 :root .toolbarbutton-badge {
   background-color: transparent !important;
@@ -321,6 +325,7 @@ treechildren::-moz-tree-separator {border: 0 !important}
 #PanelUI-button, #PanelUI-menu-button {padding-inline: 0 !important; margin-inline: 0 !important}
 
 
+
 /*   ______ MENU ______   */
 #appMenu-addons-button,
 #appMenu-preferences-button
@@ -343,8 +348,29 @@ treechildren::-moz-tree-separator {border: 0 !important}
 [oncommand="openHelpLink('firefox-help')"],
 [oncommand="openTourPage();"],
   /* Hotkeys */
-#appMenu-popup .subviewbutton[shortcut]::after
+#appMenu-popup .subviewbutton[shortcut]::after,
+
+#context-navigation,
+#context-sep-navigation,
+#context-sendpagetodevice,
+#context-sendpagetodevice + menuseparator,
+#context-sendlinktodevice,
+#context-sep-sendlinktodevice,
+#inspect-separator,
+#context-searchselect,
+#spell-separator,
+#context-viewinfo,
+#overflowMenu-customize-button,
+#context-sep-undo,
+#context-savepage,
+#context-sep-sendpagetodevice,
+#context-bookmarklink,
+#context-inspect-a11y,
+menupopup :-moz-any(menuitem)[disabled],
+menupopup :-moz-any(menuitem)[disabled] + menuseparator:not(#placesContext_editSeparator, #placesContext_openSeparator),
+#toolbar-context-menu menuitem[hidden] + menuseparator:not([id])
   {display:none}
+
 
 .panel-subview-footer,
 .panel-footer {
@@ -377,16 +403,14 @@ menupopup > menu > menupopup {
   margin-inline-start: 0 !important;
   margin-top: 0 !important}
 
-  /*   menu border   */
-@media (prefers-color-scheme: light) {
-  menupopup, tooltip, panelview, .panel-footer {border: 1px solid var(--hover) !important}
-}
+  /*   Border   
+menupopup, tooltip, panelview, .panel-footer {border: 1px solid var(--hover) !important}
+*/
 
-
+/**/
 menuitem:hover,
 menupopup menu:hover,
-toolbarbutton:hover:not([disabled], .titlebar-close, .close-icon, #nav-bar #back-button),
-toolbarbutton.bookmark-item[open],
+toolbarbutton:hover:not([disabled], .titlebar-close, .close-icon, #nav-bar #back-button, toolbaritem.all-tabs-item[selected] > toolbarbutton),
 .menu-iconic:hover,
 .menu-iconic[open],
 .downloadMainArea:hover,
@@ -395,37 +419,27 @@ toolbarbutton.bookmark-item[open],
   background-color: var(--hover) !important;
   color: var(--text-hover) !important}
 
+#identity-box:hover,
+#identity-box[open],
+#tracking-protection-icon-container:hover,
+#tracking-protection-icon-container[open],
+.urlbar-icon-wrapper:hover,
+.urlbar-icon-wrapper[open] {
+  background-color: var(--hover) !important}
+
+.downloadsPanelFooterButton:hover {outline: 0 !important}
+
+/*
 menuitem:active,
 menupopup menu:active,
-toolbarbutton:active:not([disabled], .titlebar-close, .close-icon, #nav-bar #back-button),
+toolbarbutton:active:not([disabled], .titlebar-close, .close-icon, #back-button),
 .downloadMainArea:active,
 .downloadButton:active,
 #downloadsHistory:active {
   background-color: var(--active) !important}
+*/
 
-.downloadsPanelFooterButton:hover {outline: 0 !important}
 
-
-#context-navigation,
-#context-sep-navigation,
-#context-sendpagetodevice,
-#context-sendpagetodevice + menuseparator,
-#context-sendlinktodevice,
-#context-sep-sendlinktodevice,
-#inspect-separator,
-#context-searchselect,
-#spell-separator,
-#context-viewinfo,
-#overflowMenu-customize-button,
-#context-sep-undo,
-#context-savepage,
-#context-sep-sendpagetodevice,
-#context-bookmarklink,
-#context-inspect-a11y,
-menupopup :-moz-any(menuitem)[disabled],
-menupopup :-moz-any(menuitem)[disabled] + menuseparator:not(#placesContext_editSeparator, #placesContext_openSeparator),
-#toolbar-context-menu menuitem[hidden] + menuseparator:not([id])
-  {display:none}
 
 
 #statuspanel-label {
@@ -434,18 +448,21 @@ menupopup :-moz-any(menuitem)[disabled] + menuseparator:not(#placesContext_editS
   opacity: .7}
 
 
+
 #alertBox {
   background-color: var(--bg) !important;
   color: var(--text) !important;
   border: 1px solid var(--text) !important}
 
 
+
 /*   ______ Findbar Ctrl+F ______   */
 .findbar-container, .findbar-textbox:not([status="notfound"]), .findbar-closebutton.close-icon {
-  background-color: var(--menu) !important;
+  background-color: var(--bg) !important;
   padding: 0 4px !important}
 .findbar-find-previous:not(:hover), .findbar-find-next:not(:hover) {
-  background: var(--menu) !important}
+  background: var(--bg) !important}
+
 
 
 /*   ______ Library ______   */
@@ -457,9 +474,11 @@ menupopup :-moz-any(menuitem)[disabled] + menuseparator:not(#placesContext_editS
 #searchFilter {background-color: var(--hover) !important}
 
 
+
 /*   ______ About Firefox ______   */
-#aboutDialogContainer {background: linear-gradient(to top, #0D0A17, #20123A) !important}
+#aboutDialogContainer {background-color: #171227 !important}
 #bottomBox {display:none}
+
 
 
 /*   ______ ADDONS ______   */
